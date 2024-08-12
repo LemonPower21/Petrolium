@@ -8,7 +8,7 @@ Petrolium is an innovative stock trading alert system! It uses Telegram API to s
 - Petrolium check stock price every minute!
 
  # It is a trading bot?
- No, It isn't. However It useful to earn on short-period of time (of course the period will depends by market price and the TP you insert).
+ No, It isn't. However It is useful to earn on short-period of time (of course the period will depends by market price and the TP you insert).
 
 # How to configure API for message?
 1. You create Telegram account.
