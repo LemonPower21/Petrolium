@@ -10,7 +10,7 @@ Petrolium is an innovative stock trading alert system! It uses Telegram API to s
  # It is a trading bot?
  No, It isn't. However It useful to earn on short-period of time (of course the period will depends by market price and the TP you insert).
 
-# How to configure API for message
+# How to configure API for message?
 1. You create Telegram account.
 2. You search for "BotFather" and write /start and then /newbot
 3. Once you completed step told by "BotFather" you will receive a token that you will insert in python code.
@@ -18,3 +18,6 @@ Petrolium is an innovative stock trading alert system! It uses Telegram API to s
    https://api.telegram.org/botTOKENHERE/getUpdates (substitute TOKENHERE with your real token)
 5. Then send a message to your bot by telegram and reload that page.
 6. Afterwards you click on "format code", and then you will find ID in "chat{id{ID HERE}}"
+
+# Where are the ticker of stock?
+1. You can find the stock ticker or symbol here: https://finance.yahoo.com/markets/stocks/most-active/
