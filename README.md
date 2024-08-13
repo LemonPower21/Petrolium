@@ -26,4 +26,10 @@ Petrolium is an innovative stock trading alert system! It uses Telegram API to s
  # How to setup It in Linux Machine?
  1. Install Python3 and pythn3-pip.
  2. Execute these following lines:
-    '''Hello'''
+
+```pip install time```
+```pip install os```
+```pip install pandas```
+```pip install requests```
+```pip install yfinance```
+```pip install ccxt```
