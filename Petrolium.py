@@ -30,7 +30,7 @@ def crypto_radar():
     os.system(CLEAN)
     ticker = input("Ticker (Ex. BTC/USD): ").upper()
     buy = float(input("Buy: "))
-    tp = int(input("TP: "))
+    tp = int(input("TP(%): "))
     terminal = "C"+input("Terminal: ").upper()
     capitale = float(input("Capital: "))
     ath = max([x[2] for x in EXCHANGE.fetch_ohlcv(ticker, '1d')])
