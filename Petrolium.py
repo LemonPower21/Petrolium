@@ -33,11 +33,11 @@ def crypto_radar():
     tp = int(input("TP(%): "))
     terminal = "C"+input("Terminal: ").upper()
     capitale = float(input("Capital: "))
-    ath = max([x[2] for x in EXCHANGE.fetch_ohlcv(ticker, '1d')])
     telegram(TOKEN,ID,f"🔵 Alert for {ticker} in the terminal {terminal} with {tp}% take-profit has been set successfully!")
     bol = 1
 
     while bol==1:
+        ath = max([x[2] for x in EXCHANGE.fetch_ohlcv(ticker, '1d')])
         last = EXCHANGE.fetch_ticker(ticker)['close']
         growth = ((last - buy) / buy) * 100
         growthp = ((last - buy) / buy)
@@ -78,11 +78,11 @@ def stock_radar():
     terminal = "A"+input("Terminal: ").upper()
     capitale = float(input("Capital: "))
     telegram(TOKEN,ID,f"🔵 Alert for {ticker} in the terminal {terminal} with {tp}% take-profit has been set successfully!")
-    data = yf.download(ticker, start="1970-01-01")
-    ath = data['Close'].max()
     bol = 1
 
     while bol==1:
+        data = yf.download(ticker, start="1970-01-01")
+        ath = data['Close'].max()
         data = yf.download(ticker)
         last = data['Close'].iloc[-1]
         growth = ((last - buy) / buy) * 100
