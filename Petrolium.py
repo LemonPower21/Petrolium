@@ -38,7 +38,6 @@ def crypto_radar():
     bol = 1
 
     while bol==1:
-        data = yf.download(ticker)
         last = EXCHANGE.fetch_ticker(ticker)['close']
         growth = ((last - buy) / buy) * 100
         growthp = ((last - buy) / buy)
@@ -51,18 +50,18 @@ def crypto_radar():
             if growth > 0:
                 print(f"Growth: \033[32m+{growth:.2f}%\033[37m of \033[33m{ticker}\033[37m in the terminal \033[36m{terminal}\033[37m\n")
                 print(f"Capital: \033[36m{capitale:.2f}€\033[37m")
-                print(f"Buy: \033[35m{buy:.2f}€\033[37m")
+                print(f"Buy price: \033[35m{buy:.2f}€\033[37m")
                 print(f"Last: \033[35m{last:.2f}€\033[37m")
                 print(f"ATH: \033[31m{ath:.2f}€\033[37m\n")
-                print(f"TP: \033[34m{tp:.2f}%\033[37m")
+                print(f"TP(%): \033[34m{tp:.2f}%\033[37m")
                 print(f"P&L: \033[32m{growthp*capitale:.2f}€\033[37m")
             if growth <= 0:
                 print(f"Growth: \033[31m{growth:.2f}%\033[37m of \033[33m{ticker}\033[37m in the terminal \033[36m{terminal}\033[37m\n")
                 print(f"Capital: \033[36m{capitale:.2f}€\033[37m")
-                print(f"Buy: \033[35m{buy:.2f}€\033[37m")
+                print(f"Buy price: \033[35m{buy:.2f}€\033[37m")
                 print(f"Last: \033[35m{last:.2f}€\033[37m")
                 print(f"ATH: \033[31m{ath:.2f}€\033[37m\n")
-                print(f"TP: \033[34m{tp:.2f}%\033[37m")
+                print(f"TP(%): \033[34m{tp:.2f}%\033[37m")
                 print(f"P&L: \033[31m{growthp*capitale:.2f}€\033[37m")
         time.sleep(TIME)
         os.system(CLEAN)
@@ -74,8 +73,8 @@ def stock_radar():
 
     os.system(CLEAN)
     ticker = input("Ticker: ").upper()
-    buy = float(input("Buy: "))
-    tp = int(input("TP: "))
+    buy = float(input("Buy price: "))
+    tp = int(input("TP(%): "))
     terminal = "A"+input("Terminal: ").upper()
     capitale = float(input("Capital: "))
     telegram(TOKEN,ID,f"🔵 Alert for {ticker} in the terminal {terminal} with {tp}% take-profit has been set successfully!")
@@ -97,18 +96,18 @@ def stock_radar():
             if growth > 0:
                 print(f"Growth: \033[32m+{growth:.2f}%\033[37m of \033[33m{ticker}\033[37m in the terminal \033[36m{terminal}\033[37m\n")
                 print(f"Capital: \033[36m{capitale:.2f}€\033[37m")
-                print(f"Buy: \033[35m{buy:.2f}€\033[37m")
+                print(f"Buy price: \033[35m{buy:.2f}€\033[37m")
                 print(f"Last: \033[35m{last:.2f}€\033[37m")
                 print(f"ATH: \033[31m{ath:.2f}€\033[37m\n")
-                print(f"TP: \033[34m{tp:.2f}%\033[37m")
+                print(f"TP(%): \033[34m{tp:.2f}%\033[37m")
                 print(f"P&L: \033[32m{growthp*capitale:.2f}€\033[37m")
             if growth <= 0:
                 print(f"Growth: \033[31m{growth:.2f}%\033[37m of \033[33m{ticker}\033[37m in the terminal \033[36m{terminal}\033[37m\n")
                 print(f"Capital: \033[36m{capitale:.2f}€\033[37m")
-                print(f"Buy: \033[35m{buy:.2f}€\033[37m")
+                print(f"Buy price: \033[35m{buy:.2f}€\033[37m")
                 print(f"Last: \033[35m{last:.2f}€\033[37m")
                 print(f"ATH: \033[31m{ath:.2f}€\033[37m\n")
-                print(f"TP: \033[34m{tp:.2f}%\033[37m")
+                print(f"TP(%): \033[34m{tp:.2f}%\033[37m")
                 print(f"P&L: \033[31m{growthp*capitale:.2f}€\033[37m")
         time.sleep(TIME)
         os.system(CLEAN)
