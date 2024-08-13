@@ -55,7 +55,7 @@ def crypto_radar():
                 print(f"Last: \033[35m{last:.2f}€\033[37m")
                 print(f"ATH: \033[31m{ath:.2f}€\033[37m\n")
                 print(f"TP(%): \033[34m{tp:.2f}%\033[37m")
-                print(f"P&L: \033[32m{growthp*capitale:.2f}€\033[37m")
+                print(f"P&L: \033[32m+{growthp*capitale:.2f}€\033[37m")
             if growth <= 0:
                 print(f"Growth: \033[31m{growth:.2f}%\033[37m of \033[33m{ticker}\033[37m in the terminal \033[36m{terminal}\033[37m\n")
                 print(f"Capital: \033[36m{capitale:.2f}€\033[37m")
@@ -102,7 +102,7 @@ def stock_radar():
                 print(f"Last: \033[35m{last:.2f}€\033[37m")
                 print(f"ATH: \033[31m{ath:.2f}€\033[37m\n")
                 print(f"TP(%): \033[34m{tp:.2f}%\033[37m")
-                print(f"P&L: \033[32m{growthp*capitale:.2f}€\033[37m")
+                print(f"P&L: \033[32m+{growthp*capitale:.2f}€\033[37m")
             if growth <= 0:
                 print(f"Growth: \033[31m{growth:.2f}%\033[37m of \033[33m{ticker}\033[37m in the terminal \033[36m{terminal}\033[37m\n")
                 print(f"Capital: \033[36m{capitale:.2f}€\033[37m")
