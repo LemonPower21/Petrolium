@@ -5,8 +5,8 @@ import time
 import os
 import requests
 
-CLEAN = 'cls' #cls
-TIME = 25
+CLEAN = 'clear' #cls
+TIME = 2
 TOKEN = 'YOURTOKENHERE'
 ID = 'YOURCHATIDHERE'
 EXCHANGE = ccxt.binance()
@@ -37,6 +37,7 @@ def crypto_radar():
     bol = 1
 
     while bol==1:
+        os.system(CLEAN)
         ath = max([x[2] for x in EXCHANGE.fetch_ohlcv(ticker, '1d')])
         last = EXCHANGE.fetch_ticker(ticker)['close']
         growth = ((last - buy) / buy) * 100
@@ -81,6 +82,7 @@ def stock_radar():
     bol = 1
 
     while bol==1:
+        os.system(CLEAN)
         data = yf.download(ticker, start="1970-01-01")
         ath = data['Close'].max()
         data = yf.download(ticker)
