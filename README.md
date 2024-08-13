@@ -1,5 +1,5 @@
 # Petrolium
-Petrolium is an innovative crypto and stock trading alert system! It uses Telegram API to send message in addiction of the Python "requests" library.
+Petrolium is an innovative crypto and stock trading alarm system! It uses Telegram API to send message in addiction of the Python "requests" library.
 
 # How does It work?
 - In your investment account you buy the stock you choose at market price with a certain amount of money.
@@ -9,7 +9,7 @@ Petrolium is an innovative crypto and stock trading alert system! It uses Telegr
 
  # It is a trading bot?
  No, It isn't. However It is useful to earn on short-period of time, when the bot send you message. (of course the period will depends by market price and the TP you insert).
- It is very good system that, unlikely than Tradingview, It is open-source and free.
+ It is very good alarm system that, unlikely than Tradingview, It is open-source and free.
 
 # How to configure API for message?
 1. You create Telegram account.
@@ -22,7 +22,7 @@ Petrolium is an innovative crypto and stock trading alert system! It uses Telegr
 
 # Where are the ticker of stock?
 1. You can find the stock ticker or symbol here: https://finance.yahoo.com/markets/stocks/most-active/
-2. For crypto there is an example in the code.
+2. For crypto there is an example in the code, but you can search the differents couple on Binance.
 
  # How to setup It in Linux Machine?
  1. Install python3 and python3-pip.
