@@ -24,7 +24,7 @@ Petrolium is an innovative crypto and stock trading alert system! It uses Telegr
 2. For crypto there is an example in the code.
 
  # How to setup It in Linux Machine?
- 1. Install Python3 and pythn3-pip.
+ 1. Install python3 and python3-pip.
  2. Execute these following lines:
 
 ```pip install time``` 
