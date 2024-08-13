@@ -21,3 +21,9 @@ Petrolium is an innovative stock trading alert system! It uses Telegram API to s
 
 # Where are the ticker of stock?
 1. You can find the stock ticker or symbol here: https://finance.yahoo.com/markets/stocks/most-active/
+2. For crypto there is an example in the code.
+
+ # How to setup It in Linux Machine?
+ 1. Install Python3 and pythn3-pip.
+ 2. Execute these following lines:
+    '''Hello'''
