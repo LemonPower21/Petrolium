@@ -31,7 +31,7 @@ pip install yfinance requests ta pandas
 ### Start the Application
 
 ```python
-python petrolium_technology_server.py
+python Petrolium.py
 ```
 
 ### Monitor Mode
