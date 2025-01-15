@@ -1,4 +1,4 @@
-## Petrolium Technology Server
+# Petrolium Technology Server
 
 This project provides a set of functions designed to assist with financial analysis using stock data and technical indicators. It features capabilities for monitoring stocks, analyzing technical indicators like RSI and EMA, and sending notifications via Telegram or email.
 
