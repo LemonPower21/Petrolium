@@ -1,6 +1,7 @@
 # Petrolium Technology Server
+## Created by LemonPower21 (Francesco Vito Giotta)
 
-This project provides a set of functions designed to assist with financial analysis using stock data and technical indicators. It features capabilities for monitoring stocks, analyzing technical indicators like RSI and EMA, and sending notifications via Telegram or email.
+This project provides a set of functions designed to assist with financial analysis using stock data and technical indicators. It features capabilities for monitoring stocks, analyzing technical indicators like RSI and EMA, and sending notifications via email.
 
 ## Features
 
