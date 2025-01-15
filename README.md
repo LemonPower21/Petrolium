@@ -1,167 +1,184 @@
-# Petrolium Technology Server
+## Petrolium Technology Server
 
-This project provides various functions for financial analysis using the `yfinance` and `ta` libraries. It includes functionalities for retrieving stock prices, calculating financial indicators, monitoring stocks, and sending notifications via Telegram.
+This project provides a set of functions designed to assist with financial analysis using stock data and technical indicators. It features capabilities for monitoring stocks, analyzing technical indicators like RSI and EMA, and sending notifications via Telegram or email.
 
 ## Features
 
-- **Financial Analysis**: Functions to retrieve stock prices, calculate ROI, RSI, EMA, and profit.
-- **Telegram Notifications**: Send notifications via Telegram.
-- **Monitoring Mode**: Monitor multiple tickers and send buy/sell signals.
-- **Position Mode**: Monitor specific positions and send sell signals.
-- **Chronometer**: Measure elapsed time in years, months, days, hours, minutes, and seconds.
+- **Financial Analysis**: Retrieve stock prices, calculate ROI, RSI, EMA, P&L, and other financial metrics.
+- **Position Monitoring**: Track specific positions with user-defined buy prices, quantities, and take-profit percentages.
+- **Telegram Notifications**: Receive real-time updates about the stock positions.
+- **Market Metrics**: Fetch real-time data like volume, market cap, bid/ask prices, and more.
+- **Time Tracking**: Measure elapsed time in years, months, days, and more.
+- **Logging**: Record events and actions to a log file for tracking and analysis.
 
 ## Requirements
 
-- `yfinance`
-- `requests`
-- `webbrowser`
-- `ta`
-- `pandas`
-- `platform`
-- `os`
-- `time`
+To run the application, you'll need the following Python libraries:
+
+- `yfinance` for financial data.
+- `ta` for technical analysis indicators.
+- `time` for time tracking.
+- `platform` for platform-specific operations.
+- `requests` and `smtplib` for sending notifications.
+- `colorama` for colored output in the terminal.
 
 You can install the required libraries using:
+
 ```bash
-pip install yfinance requests ta pandas
+pip install yfinance requests ta pandas colorama
 ```
 
 ## Usage
 
 ### Start the Application
 
-```python
+```bash
 python Petrolium.py
 ```
 
+Upon running the script, you will be prompted to select between **Monitor mode** and **Position mode**.
+
 ### Monitor Mode
 
-1. Run the script.
-2. Select `1` for Monitor mode.
-3. Enter the number of tickers to monitor.
-4. Enter the tickers one by one.
-5. The application will monitor the tickers and send buy signals via Telegram.
+1. Run the script and choose `M` for **Monitor mode**.
+2. Input the number of tickers you wish to monitor.
+3. Enter each ticker symbol.
+4. The system will track the selected tickers and send buy/sell alerts via Telegram if necessary.
 
 ### Position Mode
 
-1. Run the script.
-2. Select `2` for Position mode.
-3. Enter the number of tickers to monitor.
-4. Enter the terminal name.
-5. Enter the tickers, quantity, buy price, and take profit percentage for each ticker.
-6. The application will monitor the positions and send sell signals via Telegram.
+1. Run the script and select `P` for **Position mode**.
+2. Specify the number of tickers and terminal name.
+3. Enter buy price, quantity, and take profit percentage for each ticker.
+4. The system will monitor these positions and notify you of buy/sell opportunities.
 
 ### Exit
 
-1. Run the script.
-2. Select `3` to exit.
+To exit the application, simply choose the exit option after completing your tasks.
 
-## Functions
+## Key Functions
 
-### `start_time()`
+### `start()`
 
-- **Description**: Returns the current time.
-- **Returns**: Current time in seconds.
+- **Description**: Starts the timer.
+- **Returns**: The current time in seconds since the epoch.
 
-### `stop_time(start_time)`
+### `stop(start)`
 
-- **Description**: Calculates the elapsed time.
-- **Parameters**: `start_time` - The start time.
-- **Returns**: Years, months, days, hours, minutes, and seconds.
+- **Description**: Stops the timer and calculates elapsed time.
+- **Parameters**: `start` - The start time in seconds.
+- **Returns**: A tuple with years, months, days, hours, minutes, and seconds.
 
-### `clean()`
+### `bid(ticker)`
 
-- **Description**: Clears the console screen.
+- **Description**: Fetches the bid price of the specified stock.
+- **Parameters**: `ticker` - The stock symbol (e.g., `AAPL`).
+- **Returns**: The bid price or `None` if the data is unavailable.
 
-### `last(ticker)`
+### `ask(ticker)`
 
-- **Description**: Fetches the last closing price of the specified ticker.
-- **Parameters**: `ticker` (str) - The ticker symbol.
-- **Returns**: Last closing price.
+- **Description**: Fetches the ask price of the specified stock.
+- **Parameters**: `ticker` - The stock symbol (e.g., `AAPL`).
+- **Returns**: The ask price or `None` if the data is unavailable.
 
-### `roi(ticker, buy)`
+### `rsi(ticker, periods, chart, timeframe)`
 
-- **Description**: Calculates the Return on Investment (ROI) for the specified ticker and buy price.
-- **Parameters**: `ticker` (str) - The ticker symbol.
-  `buy` (float) - The buy price.
-- **Returns**: ROI in percentage.
+- **Description**: Calculates the Relative Strength Index (RSI) for a given stock.
+- **Parameters**:
+  - `ticker` - The stock symbol (e.g., `AAPL`).
+  - `periods` - The number of periods for RSI calculation.
+  - `chart` - The length of the chart data (e.g., `"1y"`).
+  - `timeframe` - The data interval (e.g., `"1d"`).
+- **Returns**: The RSI value.
 
-### `rsi(ticker, periods, chart_data, timeframe)`
+### `ema(ticker, periods, chart, timeframe)`
 
-- **Description**: Calculates the Relative Strength Index (RSI) for the specified ticker.
-- **Parameters**: `ticker` (str) - The ticker symbol.
-  `periods` (int) - The number of periods for RSI calculation.
-  `chart_data` (str) - The period of chart data.
-  `timeframe` (str) - The interval of the chart data.
-- **Returns**: RSI value.
+- **Description**: Calculates the Exponential Moving Average (EMA) for a given stock.
+- **Parameters**:
+  - `ticker` - The stock symbol (e.g., `AAPL`).
+  - `periods` - The number of periods for EMA calculation.
+  - `chart` - The length of the chart data (e.g., `"1y"`).
+  - `timeframe` - The data interval (e.g., `"1d"`).
+- **Returns**: The EMA value.
 
-### `ema(ticker, periods, chart_data, timeframe)`
+### `bos(ticker, lookback="5d", timeframe="1m")`
 
-- **Description**: Calculates the Exponential Moving Average (EMA) for the specified ticker.
-- **Parameters**: `ticker` (str) - The ticker symbol.
-  `periods` (int) - The number of periods for EMA calculation.
-  `chart_data` (str) - The period of chart data.
-  `timeframe` (str) - The interval of the chart data.
-- **Returns**: EMA value.
+- **Description**: Determines if the stock price has reached a new high within a specified lookback period.
+- **Parameters**:
+  - `ticker` - The stock symbol (e.g., `AAPL`).
+  - `lookback` - The period to look back (default is `"5d"`).
+  - `timeframe` - The data interval (default is `"1m"`).
+- **Returns**: `True` if the stock has reached a new high, otherwise `False`.
 
-### `profit(ticker, buy, qty)`
+### `log(text)`
 
-- **Description**: Calculates the profit for the specified ticker, buy price, and quantity.
-- **Parameters**: `ticker` (str) - The ticker symbol.
-  `buy` (float) - The buy price.
-  `qty` (float) - The quantity.
-- **Returns**: Profit value.
+- **Description**: Logs the provided text to a log file with timestamp.
+- **Parameters**: `text` - The message to log.
 
-### `invested(buy, qty)`
+### `email(server, port, user, password, recipient, subject, body)`
 
-- **Description**: Calculates the invested amount for the specified buy price and quantity.
-- **Parameters**: `buy` (float) - The buy price.
-  `qty` (float) - The quantity.
-- **Returns**: Invested amount.
-
-### `telegram(token, id, message)`
-
-- **Description**: Sends a message via Telegram.
-- **Parameters**: `token` (str) - The Telegram bot token.
-  `id` (str) - The chat ID.
-  `message` (str) - The message to send.
-- **Returns**: Response from Telegram API.
-
-### `ychart(ticker)`
-
-- **Description**: Opens the Yahoo Finance chart for the specified ticker in a web browser.
-- **Parameters**: `ticker` (str) - The ticker symbol.
-
-### `ynews(ticker)`
-
-- **Description**: Opens the Yahoo Finance news page in a web browser.
+- **Description**: Sends an email with the specified details and includes a log file as an attachment.
+- **Parameters**:
+  - `server` - The email server (e.g., `smtp.gmail.com`).
+  - `port` - The port number (e.g., `587` for TLS).
+  - `user` - The email address to send from.
+  - `password` - The email password.
+  - `recipient` - The recipient email address.
+  - `subject` - The email subject.
+  - `body` - The email body.
 
 ### `change(pair)`
 
-- **Description**: Fetches the exchange rate for the specified currency pair.
-- **Parameters**: `pair` (str) - The currency pair.
-- **Returns**: Exchange rate.
+- **Description**: Fetches the exchange rate for a given currency pair (e.g., `USDEUR=X`).
+- **Parameters**: `pair` - The currency pair (e.g., `USDEUR`).
+- **Returns**: The exchange rate or `None` if unavailable.
 
 ### `ath(ticker)`
 
-- **Description**: Fetches the all-time high (ATH) for the specified ticker.
-- **Parameters**: `ticker` (str) - The ticker symbol.
-- **Returns**: ATH value.
+- **Description**: Fetches the all-time high (ATH) for the given stock.
+- **Parameters**: `ticker` - The stock symbol.
+- **Returns**: The all-time high price or `None` if unavailable.
 
-### `get_currency(ticker)`
+### `currency(ticker)`
 
-- **Description**: Fetches the currency in which the specified ticker is traded.
-- **Parameters**: `ticker` (str) - The ticker symbol.
-- **Returns**: Currency.
+- **Description**: Fetches the currency in which the stock is traded.
+- **Parameters**: `ticker` - The stock symbol.
+- **Returns**: The currency symbol (e.g., `USD`).
 
-### `get_exchange(ticker)`
+### `exchange(ticker)`
 
-- **Description**: Fetches the exchange where the specified ticker is traded.
-- **Parameters**: `ticker` (str) - The ticker symbol.
-- **Returns**: Exchange.
+- **Description**: Fetches the exchange where the stock is traded.
+- **Parameters**: `ticker` - The stock symbol.
+- **Returns**: The exchange name (e.g., `NASDAQ`).
 
-## Example
+## Example Output
 
-To start the application, simply run the script and follow the prompts to enter the necessary information. The application will then monitor the tickers or positions and send notifications via Telegram as needed.
+The output for each monitored ticker will look like this:
 
-Enjoy using the Petrolium Technology Server!
+```
+Ticker: AAPL
+Exchange: NASDAQ
+Currency: USD
+Change: +0.0205
+Quantity: 10
+Invested: 1500.00
+Buy Price: 150.00
+Last Price: 153.00
+TP (%): 10.00%
+P&L (%): +2.00%
+P&L (€): +30.00€
+EMA: 151.20
+RSI: 65.00
+ATH: 200.00
+Bid: 152.50
+Ask: 153.50
+Spread: 1.00
+Shares: 5000000000
+Volume: 2000000
+MarketCap: 2.4T
+Elapsed Time: 0y 0m 5d 1h 30m 0.00s
+```
+
+## Conclusion
+
+The **Petrolium Technology Server** is an advanced stock monitoring system that allows for detailed analysis, alerting, and reporting of stock market data in real time. It is ideal for traders and investors looking for a powerful tool to assist in their decision-making process.
